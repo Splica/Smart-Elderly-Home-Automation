@@ -16,26 +16,26 @@
   ==================================================
 
   1.0 INPUT
-      - Read DHT11 temperature and humidity
-      - Read LDR light resistance
-      - Read knob smoke/gas simulation
-      - Read NTC temperature
-      - Read K1 and K2 buttons
-      - Read IR remote
+      - Read DHT11 temperature and humidity - Hakim
+      - Read LDR light resistance - Hakim
+      - Read knob smoke/gas simulation - Hakim
+      - Read NTC temperature - Marco
+      - Read K1 and K2 buttons - Marco
+      - Read IR remote - Marco
 
   2.0 COMPUTATION
-      - Process button and IR commands
-      - Determine whether the room is dark
-      - Determine whether a fan is needed
-      - Determine warning conditions
-      - Determine alarm conditions
-      - Select the display mode
+      - Process button and IR commands - Hakim
+      - Determine whether the room is dark - Hakim
+      - Determine whether a fan is needed - Hakim
+      - Determine warning conditions - Marco
+      - Determine alarm conditions - Marco
+      - Select the display mode - Marco
 
   3.0 OUTPUT
-      - Control the LEDs
-      - Control the buzzer
-      - Update the TM1637 display
-      - Print information to Serial Monitor
+      - Control the LEDs - Hakim
+      - Control the buzzer - Hakim
+      - Update the TM1637 display - Marco
+      - Print information to Serial Monitor - Marco
 
   ==================================================
 

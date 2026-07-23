@@ -1,1 +1,0 @@
-# Smart-Elderly-Home-Automation 
