@@ -123,15 +123,15 @@ IRrecv IR(IR_PIN);
 // SYSTEM THRESHOLDS
 // ==================================================
 
-const int FAN_TEMP = 30;
+const int FAN_TEMP = 25; // ACTUAL VALUE IS 30 BUT SET TO 25 FOR DEMONSTRATION PURPOSES
 const int DANGER_TEMP = 35;
 
-const int HUMID_WARNING = 70;
+const int HUMID_WARNING = 70; 
 const int HUMID_DANGER = 85;
 
 // LightSensor.getRes() returns resistance in kΩ.
 // A higher resistance means the environment is darker.
-const float DARK_RESISTANCE = 40.0;
+const float DARK_RESISTANCE = 10.0; // ACTUAL VALUE IS 40 BUT SET TO 10 FOR DEMONSTRATION PURPOSES
 
 // Knob angle range: 0 to 280 degrees.
 const int SMOKE_WARNING_ANGLE = 180;
@@ -429,26 +429,32 @@ void readButtonInputs() {
 
 void readIRInputs() {
   if (IR.decode()) {
+
     if (IR.isReleased()) {
+
       receivedIRKeyCode = IR.keycode;
-      irKeyReceived = true;
 
-      // Check whether IR buttons 1 to 5 were pressed.
-      for (int i = 0; i < IR_MODE_COUNT; i++) {
-        if (receivedIRKeyCode == irModeKeys[i]) {
-          irRequestedDisplayMode = i;
+      // Only accept an actual key code.
+      if (receivedIRKeyCode != 0) {
+
+        irKeyReceived = true;
+
+        // IR buttons 1 to 5.
+        for (int i = 0; i < IR_MODE_COUNT; i++) {
+          if (receivedIRKeyCode == irModeKeys[i]) {
+            irRequestedDisplayMode = i;
+          }
         }
-      }
 
-      // Check whether Power or C was pressed.
-      if (receivedIRKeyCode == KEY_POWER ||
-          receivedIRKeyCode == KEY_C) {
+        // Power or C silences alarm.
+        if (receivedIRKeyCode == KEY_POWER ||
+            receivedIRKeyCode == KEY_C) {
 
-        irSilenceEvent = true;
+          irSilenceEvent = true;
+        }
       }
     }
 
-    // Prepare the IR receiver for another command.
     IR.resume();
   }
 }
